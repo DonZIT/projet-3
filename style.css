@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+/* font-family: 'Montserrat', sans-serif; */
+
+/* On peut créer des variables pour stocker des données utiles */
+/*Par exemple stocker une couleur, pour un thème par exemple*/
+/*Si on change la valeur de cette variable, tous les élements qui l'utiliseront changerons */
+/*Root désigne la racine du document */
+
+
+:root {
+    --violet: #d33bfd       /* On crée une variable qui stock la couleur violette*/
+}
+
+
+/* {
+    border: 2px solid red;
+}*/
+
+body {
+    margin: 0;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/******* Styliser la navbar *******/
+/*** Le conteneur ***/
+
+header {
+    background: linear-gradient(black, var(--violet));
+}
+
+header nav {
+    padding: 8px 5% 8px 5%;
+    display: flex;
+    flex-wrap: wrap;   /*sert à passer à la ligne si il n'y plus de place*/
+    justify-content: space-between; /*permet de mettre un grand espace entre nos deux items (Logo et nav link)*/
+    align-items: center; /* Va permettre d'aligner nos deux elements */
+}
+
+/*** Les élements dans la  navbar ***/
+/** Le premier item : le logo à gauche**/
+
+header nav h1 {
+    margin: 0;
+    text-transform: uppercase;
+    color: var(--violet); /* On utilise la variable qui stock la couleur violette */
+}
+
+/** Le second item : la liste des elements de navigation **/
+/* Les navlinks p */
+
+header nav .right {
+    display: flex;
+    align-items: center;
+}
+
+header nav .right p {
+    margin: 0 15px 0 0;
+    color: #ccc;
+}
+
+header nav .right p:hover {
+    color: white;
+    cursor: pointer;
+}
+
+/* Le bouton */
+
+header nav .right button {
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: inherit; /**Herite du bg du parent**/
+    border: 1px solid var(--violet);
+    color: var(--violet);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.5s, background-color 0.5s; /*Permet de configurer l'animation suivante, en hover*/
+}
+
+header nav .right button:hover {
+    color: inherit;
+    background-color: var(--violet);
+}
+
+/**** Stylyser les sections *****/
+
+.presentation {
+    padding: 30px 5%;
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.presentation .product-presentation {
+    width: 100%;
+    flex-shrink: 3; /*defini comment l'item va réagir au variation de place */
+    /*Il retrecie notre element pour faire rentrer l'image */
+}
+
+.presentation .product-presentation h1 {
+    margin: 0;
+    font-size: 4vw; /*4% de la view width de l'utilisateur, c'est relatif. Fait en quelque sorte le responsive*/
+    width: 80%; /*Il prend 80% de la div qui le contient, permet un retour à la ligne*/
+}
+
+.presentation .product-presentation p {
+    font-weight: 300; /*Le premier style light 300 de la police qu'on a importé*/
+    color: #e9e9e9;
+}
+
+.presentation .product-presentation button {
+    margin-top: 20px;
+    padding: 15px 20px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none; /*Bordure qui apparait par defaut sur un bouton*/
+    outline: none; /*Ligne qui apparait par defaut en hover sur un bouton*/
+    cursor: pointer;
+}
+
+.presentation .image-presentation img {
+    width: 100%;/*Prendra 100% de la taille du conteneur qui la contient*/
+}
+
+
+.first .product-presentation button {
+    background-color: var(--violet);
+    border: 1px solid var(--violet);
+    color: #ccc;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.first .product-presentation button:hover {
+    background-color: inherit;
+    color: var(--violet);
+
+}
+
+
+.first .product-presentation .small-images {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.first .product-presentation .small-images .small {
+    padding: 20px;
+    background-color: #33314D;
+    margin: 0 15px 15px 0;
+    border-radius: 20px;
+    transition: filter 0.2s;
+}
+
+.first .product-presentation .small-images .small:hover {
+    filter: brightness(50%); /*Gere la luminausité des images en hover*/
+
+}
+
+.first .product-presentation .small-images .small img {
+    width: 120px;
+}
+
+
+
+
+.second {
+    margin: 0;
+    background-color: #13181d;
+
+}
+
+.second .product-presentation .new {
+    color: var(--violet);
+}
+
+.second .product-presentation button {
+    background-color: inherit;
+    border: 1px solid var(--violet);
+    color: var(--violet);
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.second .product-presentation button:hover {
+    background-color: var(--violet);
+    color: white;
+}
+
+
+footer {
+    margin: 0;
+    background-color: black;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+footer h3 {
+    color: var(--violet);
+}
+
+footer p {
+    cursor: pointer;
+    color: #ccc;
+}
+
+footer p:hover {
+    color: white;
+}
+
+
+
+
+
+
+
+/**** Les spécificités lié au responsive ****/
+/****NOTE PENSER AJOUTER UN HAMBURGER ****/
+
+@media screen and (max-width: 640px) {
+    header nav .right p {
+        display: none;
+    }
+
+    .presentation .product-presentation h1 {
+        font-size: 2em; /*Deux fois sa taille initiale*/
+    }
+
+    .presentation .image-presentation {
+        display: none; /* Va cacher la grosse image de presentation, qui n'a pas assez de place sur mobile*/
+    } 
+
+    .first .product-presentation .small-images .small img {
+        width: 90px;
+    }
+
+    footer {
+        justify-content: center;
+    }
+
+    footer .column {
+        width: 80%;
+    }
+
+}
+
+
+
+
+
+/* linear-gradient(#13181d, #20212e, #341b47); */
